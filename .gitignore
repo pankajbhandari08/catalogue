@@ -237,3 +237,10 @@ Catalog/obj/Debug/net5.0/Catalog.genruntimeconfig.cache
 Catalog/obj/Debug/net5.0/Catalog.pdb
 Catalog/obj/Debug/net5.0/ref/Catalog.dll
 Catalog/.vs/Catalog/v16/.suo
+Catalog/.vs/Catalog/v16/.suo
+Catalog/.vs/
+Catalog/[Dd]ebug/
+Catalog/[Rr]elease/
+Catalog/x64/
+Catalog/[Bb]in/
+Catalog/[Oo]bj/

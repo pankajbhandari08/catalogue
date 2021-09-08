@@ -30,7 +30,6 @@ C:\Code\Personal\catalogue\Catalog\bin\Debug\net5.0\Catalog.runtimeconfig.dev.js
 C:\Code\Personal\catalogue\Catalog\bin\Debug\net5.0\Catalog.dll
 C:\Code\Personal\catalogue\Catalog\bin\Debug\net5.0\ref\Catalog.dll
 C:\Code\Personal\catalogue\Catalog\bin\Debug\net5.0\Catalog.pdb
-C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.csproj.AssemblyReference.cache
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.GeneratedMSBuildEditorConfig.editorconfig
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.AssemblyInfoInputs.cache
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.AssemblyInfo.cs
