@@ -1,4 +1,5 @@
-﻿using Catalog.Entities;
+﻿using Catalog.DTO;
+using Catalog.Entities;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,13 +22,21 @@ namespace Catalog.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<ItemDTO> GetItems()
         {
-            return repository.GetItems();
+            //this is one way of converting item to itemDTO
+            //return repository.GetItems().Select(item => new ItemDTO()
+            //{
+            //    Id = item.Id,
+            //    CreatedDate = item.CreatedDate,
+            //    Name = item.Name,
+            //    Price = item.Price
+            //});
+            return repository.GetItems().Select(item => item.GetItemDTO());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Item> GetItem(Guid Id)
+        public ActionResult<ItemDTO> GetItem(Guid Id)
         {
             var item = repository.GetItem(Id);
 
@@ -36,7 +45,7 @@ namespace Catalog.Controllers
                 return NotFound();
             }
 
-            return item;
+            return item.GetItemDTO();
         }
     }
 }
