@@ -33,5 +33,14 @@ namespace Catalog.Repositories
         {
             return Items.Where(item => item.Id == id).SingleOrDefault();
         }
+
+        /// <summary>
+        /// Creates the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void CreateItem(Item item)
+        {
+            Items.Add(item);
+        }
     }
 }

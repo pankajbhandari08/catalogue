@@ -43,3 +43,4 @@ C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.dll
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\ref\Catalog.dll
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.pdb
 C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.genruntimeconfig.cache
+C:\Code\Personal\catalogue\Catalog\obj\Debug\net5.0\Catalog.csproj.AssemblyReference.cache
