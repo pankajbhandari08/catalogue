@@ -227,3 +227,12 @@ Apps/Lib/Angular_1.5/**/*
 
 #Database
 !Database/WorkOrders/Assemblies/*
+Catalog/bin/Debug/net5.0/Catalog.dll
+Catalog/bin/Debug/net5.0/Catalog.pdb
+Catalog/bin/Debug/net5.0/ref/Catalog.dll
+Catalog/obj/Debug/net5.0/Catalog.csproj.CoreCompileInputs.cache
+Catalog/obj/Debug/net5.0/Catalog.csproj.FileListAbsolute.txt
+Catalog/obj/Debug/net5.0/Catalog.dll
+Catalog/obj/Debug/net5.0/Catalog.genruntimeconfig.cache
+Catalog/obj/Debug/net5.0/Catalog.pdb
+Catalog/obj/Debug/net5.0/ref/Catalog.dll
