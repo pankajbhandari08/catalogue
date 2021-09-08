@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Catalog.Configurations;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 
 namespace Catalog
 {
@@ -30,7 +34,15 @@ namespace Catalog
         {
             services.AddControllers();
 
-            services.AddSingleton<IItemsRepository, MemoryItemsRepository>();
+
+            BsonSerializer.RegisterSerializer(new GuidSerializer(MongoDB.Bson.BsonType.String));
+            BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(MongoDB.Bson.BsonType.String));
+
+            services.AddSingleton<IItemsRepository, MongoDBItemsRepository>();
+            services.AddSingleton<IMongoClient>(serviceProvider => {
+                var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+                return new MongoClient(settings.ConnectionString);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
