@@ -42,5 +42,26 @@ namespace Catalog.Repositories
         {
             Items.Add(item);
         }
+
+        /// <summary>
+        /// Updates the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        public void UpdateItem(Item item)
+        {
+            var index = Items.FindIndex(exisitingItem => exisitingItem.Id == item.Id);
+
+            Items[index] = item;
+        }
+
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        public void DeleteItem(Guid id)
+        {
+            var index = Items.FindIndex(exisitingItem => exisitingItem.Id == id);
+            Items.RemoveAt(index);
+        }
     }
 }

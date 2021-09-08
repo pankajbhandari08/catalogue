@@ -24,5 +24,17 @@ namespace Catalog.Repositories
         /// </summary>
         /// <param name="item">The item.</param>
         public void CreateItem(Item item);
+
+        /// <summary>
+        /// Updates the item.
+        /// </summary>
+        /// <param name="item">The item.</param>
+        void UpdateItem(Item item);
+
+        /// <summary>
+        /// Deletes the item.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        void DeleteItem(Guid id);
     }
 }
