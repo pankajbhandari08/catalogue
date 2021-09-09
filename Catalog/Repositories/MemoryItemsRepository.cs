@@ -19,9 +19,9 @@ namespace Catalog.Repositories
         /// Gets the items.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Item> GetItems()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            return Items;
+            return await Task.FromResult(Items);
         }
 
         /// <summary>
@@ -29,39 +29,44 @@ namespace Catalog.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public Item GetItem(Guid id)
+        public async Task<Item> GetItemAsync(Guid id)
         {
-            return Items.Where(item => item.Id == id).SingleOrDefault();
+            return await Task.FromResult(Items.Where(item => item.Id == id).SingleOrDefault());
         }
 
         /// <summary>
         /// Creates the item.
         /// </summary>
         /// <param name="item">The item.</param>
-        public void CreateItem(Item item)
+        public async Task CreateItemAsync(Item item)
         {
             Items.Add(item);
+            await Task.CompletedTask;
         }
 
         /// <summary>
         /// Updates the item.
         /// </summary>
         /// <param name="item">The item.</param>
-        public void UpdateItem(Item item)
+        public async Task UpdateItemAsync(Item item)
         {
             var index = Items.FindIndex(exisitingItem => exisitingItem.Id == item.Id);
 
             Items[index] = item;
+
+            await Task.CompletedTask;
         }
 
         /// <summary>
         /// Deletes the item.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void DeleteItem(Guid id)
+        public async Task DeleteItemAsync(Guid id)
         {
             var index = Items.FindIndex(exisitingItem => exisitingItem.Id == id);
             Items.RemoveAt(index);
+
+            await Task.CompletedTask;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Catalog.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ItemDTO> GetItems()
+        public async Task<IEnumerable<ItemDTO>> GetItemsAsync()
         {
             //this is one way of converting item to itemDTO
             //return repository.GetItems().Select(item => new ItemDTO()
@@ -32,13 +32,13 @@ namespace Catalog.Controllers
             //    Name = item.Name,
             //    Price = item.Price
             //});
-            return repository.GetItems().Select(item => item.GetItemDTO());
+            return (await repository.GetItemsAsync()).Select(item => item.GetItemDTO());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ItemDTO> GetItem(Guid Id)
+        public async Task<ActionResult<ItemDTO>> GetItemAsync(Guid Id)
         {
-            var item = repository.GetItem(Id);
+            var item = await repository.GetItemAsync(Id);
 
             if (item == null)
             {
@@ -50,7 +50,7 @@ namespace Catalog.Controllers
 
         //POST /items
         [HttpPost]
-        public ActionResult<ItemDTO> AddItem(CreateItemDTO itemDTO)
+        public async Task<ActionResult<ItemDTO>> AddItemAsync(CreateItemDTO itemDTO)
         {
             Item item = new Item()
             {
@@ -60,17 +60,17 @@ namespace Catalog.Controllers
                 Price = itemDTO.Price
             };
 
-            repository.CreateItem(item);
+            await repository .CreateItemAsync(item);
 
-            return CreatedAtAction(nameof(GetItem), new { id = item.Id }, item);
+            return CreatedAtAction(nameof(GetItemAsync), new { id = item.Id }, item);
         }
 
 
         //PUT /items/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateItem(Guid id, UpdateItemDTO itemDTO)
+        public async Task<ActionResult> UpdateItemAsync(Guid id, UpdateItemDTO itemDTO)
         {
-            var existingItem = repository.GetItem(id);
+            var existingItem = await repository.GetItemAsync(id);
 
             if (existingItem == null)
                 return NotFound();
@@ -81,7 +81,7 @@ namespace Catalog.Controllers
                 Price = itemDTO.Price
             };
 
-            repository.UpdateItem(updatedItem);
+            await repository.UpdateItemAsync(updatedItem);
 
             return NoContent();
         }
@@ -89,14 +89,14 @@ namespace Catalog.Controllers
 
         //DELETE /items/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteItem(Guid id)
+        public async Task<ActionResult> DeleteItemAsync(Guid id)
         {
-            var existingItem = repository.GetItem(id);
+            var existingItem = repository.GetItemAsync(id);
 
             if (existingItem == null)
                 return NotFound();
 
-            repository.DeleteItem(id);
+            await repository .DeleteItemAsync(id);
 
             return NoContent();
         }

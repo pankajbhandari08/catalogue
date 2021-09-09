@@ -32,7 +32,10 @@ namespace Catalog
         //this is used for service registration.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options=>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
 
 
             BsonSerializer.RegisterSerializer(new GuidSerializer(MongoDB.Bson.BsonType.String));
